@@ -1,5 +1,7 @@
 const OUTCOMES = ["Rock", "Paper", "Scissors"];
-const gameRounds = 0;
+let gameRounds = 0,
+  playerScore = 0,
+  computerScore = 0;
 
 function getComputerChoice() {
   const computerSelection =
@@ -38,8 +40,10 @@ function playRound(playerInput, computerInput) {
     alert("It's a tie!");
   } else if (computerInput === playerLoseChoice) {
     alert(`You lost! Computer choose ${computerInput}`);
+    computerScore++;
   } else {
     alert(`You win! Computer choose ${computerInput}`);
+    playerScore++;
   }
 }
 
@@ -48,6 +52,22 @@ function game() {
 
   for (let i = 1; i <= gameRounds; i++) {
     playRound(getPlayerChoice(), getComputerChoice());
+  }
+
+  checkResults();
+}
+
+function checkResults() {
+  if (playerScore > computerScore) {
+    alert(
+      `You won the game! You got ${playerScore} point(s) while the computer got ${computerScore}.`
+    );
+  } else if (playerScore === computerScore) {
+    alert(`The game tied! You and the computer got ${playerScore} point(s).`);
+  } else {
+    alert(
+      `You lost the game! The computer got ${computerScore} point(s) while you got ${playerScore}.`
+    );
   }
 }
 
