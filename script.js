@@ -9,6 +9,16 @@ function getComputerChoice() {
   return computerSelection;
 }
 
+function getPlayerChoice() {
+  const playerSelection = prompt("Rock, Paper or Scissors?");
+
+  const firtsLetterCap = playerSelection.charAt(0).toUpperCase();
+  const stringRemainder = playerSelection.slice(1).toLowerCase().trim();
+  const playerChoiceNoCase = firtsLetterCap.concat("", stringRemainder);
+
+  return playerChoiceNoCase;
+}
+
 function whoWinsAgainst(input) {
   switch (input) {
     case "Rock":
