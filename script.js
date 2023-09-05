@@ -1,4 +1,5 @@
 const OUTCOMES = ["Rock", "Paper", "Scissors"];
+const gameRounds = 0;
 
 function getComputerChoice() {
   const computerSelection =
@@ -41,3 +42,13 @@ function playRound(playerInput, computerInput) {
     alert(`You win! Computer choose ${computerInput}`);
   }
 }
+
+function game() {
+  gameRounds = parseInt(prompt("How many rounds do you want to play?"));
+
+  for (let i = 1; i <= gameRounds; i++) {
+    playRound(getPlayerChoice(), getComputerChoice());
+  }
+}
+
+game();
