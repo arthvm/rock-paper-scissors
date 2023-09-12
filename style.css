@@ -1,0 +1,34 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #414141;
+}
+
+.game-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.menu-content {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.rounds-number {
+  font-size: 26px;
+}
+
+.round-btns,
+.start-btn {
+  display: flex;
+  flex-direction: column;
+  color: darkkhaki;
+}
