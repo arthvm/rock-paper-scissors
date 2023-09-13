@@ -1,3 +1,4 @@
+/************************************************** GERAL SETTINGS **************************************************/
 body {
   display: flex;
   justify-content: center;
@@ -14,6 +15,7 @@ body {
   display: flex;
 }
 
+/************************************************** GAME MENU SETTINGS **************************************************/
 .game-menu {
   display: flex;
   flex-direction: column;
@@ -50,4 +52,84 @@ body {
 #round-down.deactivate {
   color: #bdb76b55;
   pointer-events: none;
+}
+
+/************************************************** GAME SETTINGS **************************************************/
+
+.game {
+  display: flex;
+  gap: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.game-header,
+.score-board {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-board {
+  gap: 5px;
+}
+
+.player-score {
+  color: greenyellow;
+}
+
+.computer-score {
+  color: rgb(255, 94, 0);
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.card {
+  display: flex;
+  color: #414141;
+  font-size: larger;
+  font-weight: bold;
+  border: 2px solid #b6b05a;
+  border-radius: 4px;
+  padding: 20px;
+  min-width: 100px;
+  background-color: #bdb76b;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #bd9c6b;
+  border: 2px solid #9e7c4a;
+}
+
+.card > .card-header {
+  margin: 0px;
+}
+
+.card > .card-image {
+  margin: 0px;
+  font-size: 100px;
+}
+
+.game-footer {
+  font-size: 21px;
+}
+
+.game-footer > .result-display[data-result="win"] {
+  color: greenyellow;
+}
+
+.game-footer > .result-display[data-result="lose"] {
+  color: rgb(255, 94, 0);
 }

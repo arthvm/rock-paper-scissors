@@ -29,10 +29,31 @@
         <!-- GAME -->
         <div class="page game" data-page="2">
             <div class="game-header">
-                <h1 class="round-display">Current Round</h1>
+                <h1 class="round-display">Round 1</h1>
+                <div class="score-board">
+                    <h2 class="player-score">0</h2>
+                    <h2>x</h2>
+                    <h2 class="computer-score">0</h2>
+                </div>
             </div>
             <div class="game-content">
-
+                <div class="cards">
+                    <div class="card" data-choice_selector data-type="rock">
+                        <p class="card-header">Rock</p>
+                        <p class="card-image">🪨</p>
+                    </div>
+                    <div class="card" data-choice_selector data-type="paper">
+                        <p class="card-header">Paper</p>
+                        <p class="card-image">📄</p>
+                    </div>
+                    <div class="card" data-choice_selector data-type="scissors">
+                        <p class="card-header">Scissors</p>
+                        <p class="card-image">✂️</p>
+                    </div>
+                </div>
+            </div>
+            <div class="game-footer">
+                <p class="result-display" data-result="win"></p>
             </div>
         </div>
         <!-- GAME RESULT -->
