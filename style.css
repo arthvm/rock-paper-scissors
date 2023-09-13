@@ -41,4 +41,5 @@ body {
 
 #round-down.deactivate {
   color: #bdb76b55;
+  pointer-events: none;
 }

@@ -3,13 +3,19 @@ let gameRounds = 1,
   playerScore = 0,
   computerScore = 0;
 
+const gameMenu = document.querySelector(".game-menu");
+
 const roundButtons = document.querySelectorAll(".round-btn");
 const downRoundButton = document.querySelector("#round-down");
 const roundsNumber = document.querySelector(".rounds-number");
+const startButton = document.querySelector(".start-btn");
 
+/* GAME MENU SECTION*/
 roundButtons.forEach((button) => {
   button.addEventListener("click", getRoundButtonsAction);
 });
+
+startButton.addEventListener("click", startGame);
 
 function getRoundButtonsAction(e) {
   let buttonId = e.target.id;
@@ -27,6 +33,10 @@ function getRoundButtonsAction(e) {
   }
 
   roundsNumber.textContent = gameRounds;
+}
+
+function startGame() {
+  gameMenu.remove();
 }
 
 // function getComputerChoice() {
