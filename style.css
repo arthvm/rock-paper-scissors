@@ -6,6 +6,14 @@ body {
   background-color: #414141;
 }
 
+.pages .page {
+  display: none;
+}
+
+.pages .page.is-active {
+  display: flex;
+}
+
 .game-menu {
   display: flex;
   flex-direction: column;

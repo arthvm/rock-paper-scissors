@@ -11,8 +11,9 @@
 </head>
 
 <body>
-    <div class="content-container">
-        <div class="game-menu">
+    <div class="pages content-container">
+        <!-- GAME MENU -->
+        <div class="page game-menu is-active" data-page="1">
             <div class="menu-header">
                 <h1>How many rounds do you want to play?</h1>
             </div>
@@ -23,13 +24,19 @@
                     <i class="fa-solid fa-2x fa-caret-down round-btn deactivate" id="round-down"></i>
                 </div>
             </div>
-            <i class="fa-solid fa-4x fa-play start-btn"></i>
-
+            <i class="fa-solid fa-4x fa-play start-btn" data-switcher data-tab="2"></i>
         </div>
-        <div class="game">
+        <!-- GAME -->
+        <div class="page game" data-page="2">
+            <div class="game-header">
+                <h1 class="round-display">Current Round</h1>
+            </div>
+            <div class="game-content">
 
+            </div>
         </div>
-        <div class="game-results">
+        <!-- GAME RESULT -->
+        <div class="page game-results" data-page="3">
 
         </div>
     </div>

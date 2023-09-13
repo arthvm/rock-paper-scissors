@@ -1,21 +1,49 @@
-// const OUTCOMES = ["Rock", "Paper", "Scissors"];
+/**************************************************GERAL VARIABLES**************************************************/
+
 let gameRounds = 1,
   playerScore = 0,
   computerScore = 0;
 
-const gameMenu = document.querySelector(".game-menu");
+/**************************************************GAME MENU VARIABELS**************************************************/
 
 const roundButtons = document.querySelectorAll(".round-btn");
 const downRoundButton = document.querySelector("#round-down");
 const roundsNumber = document.querySelector(".rounds-number");
-const startButton = document.querySelector(".start-btn");
 
-/* GAME MENU SECTION*/
+/**************************************************GAME VARIABLES**************************************************/
+
+const OUTCOMES = ["Rock", "Paper", "Scissors"];
+const roundDisplay = document.querySelector(".round-display");
+/**************************************************Page Changing**************************************************/
+
+window.onload = () => {
+  const tabSwitchers = document.querySelectorAll("[data-switcher]");
+
+  for (let i = 0; i < tabSwitchers.length; i++) {
+    const tabSwitcher = tabSwitchers[i];
+    const pageId = tabSwitcher.dataset.tab;
+
+    tabSwitcher.addEventListener("click", () => {
+      SwitchPage(pageId);
+    });
+  }
+};
+
+function SwitchPage(page_id) {
+  const currentPage = document.querySelector(".pages .page.is-active");
+  currentPage.classList.remove("is-active");
+  console.log(currentPage);
+
+  const nextPage = document.querySelector(
+    `.pages .page[data-page="${page_id}"]`
+  );
+  nextPage.classList.add("is-active");
+}
+
+/**************************************************GAME MENU SECTION**************************************************/
 roundButtons.forEach((button) => {
   button.addEventListener("click", getRoundButtonsAction);
 });
-
-startButton.addEventListener("click", startGame);
 
 function getRoundButtonsAction(e) {
   let buttonId = e.target.id;
@@ -35,9 +63,7 @@ function getRoundButtonsAction(e) {
   roundsNumber.textContent = gameRounds;
 }
 
-function startGame() {
-  gameMenu.remove();
-}
+/**************************************************GAME SECTION**************************************************/
 
 // function getComputerChoice() {
 //   const computerSelection =
