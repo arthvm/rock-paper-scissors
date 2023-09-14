@@ -1,6 +1,7 @@
-/**************************************************GERAL VARIABLES**************************************************/
+/**************************************************GENERAL VARIABLES**************************************************/
 
 let gameRounds = 1,
+  currentRound = 1,
   playerScore = 0,
   computerScore = 0;
 
@@ -12,9 +13,13 @@ const roundsNumber = document.querySelector(".rounds-number");
 
 /**************************************************GAME VARIABLES**************************************************/
 
-const OUTCOMES = ["Rock", "Paper", "Scissors"];
+const OUTCOMES = ["rock", "paper", "scissors"];
 const roundDisplay = document.querySelector(".round-display");
-/**************************************************Page Changing**************************************************/
+const playerScoreDisplay = document.querySelector(".player-score");
+const computerScoreDisplay = document.querySelector(".computer-score");
+const resultDisplay = document.querySelector(".result-display");
+
+/**************************************************PAGE SWITCHING**************************************************/
 
 window.onload = () => {
   const tabSwitchers = document.querySelectorAll("[data-switcher]");
@@ -32,12 +37,22 @@ window.onload = () => {
 function SwitchPage(page_id) {
   const currentPage = document.querySelector(".pages .page.is-active");
   currentPage.classList.remove("is-active");
-  console.log(currentPage);
 
   const nextPage = document.querySelector(
     `.pages .page[data-page="${page_id}"]`
   );
   nextPage.classList.add("is-active");
+}
+
+const choiceSelectors = document.querySelectorAll("[data-choice_selector]");
+
+for (let i = 0; i < choiceSelectors.length; i++) {
+  const choiceSelector = choiceSelectors[i];
+  const choiceType = choiceSelector.dataset.type;
+
+  choiceSelector.addEventListener("click", () => {
+    playRound(choiceType, getComputerChoice());
+  });
 }
 
 /**************************************************GAME MENU SECTION**************************************************/
@@ -64,60 +79,57 @@ function getRoundButtonsAction(e) {
 }
 
 /**************************************************GAME SECTION**************************************************/
+function whoWinsAgainst(input) {
+  switch (input) {
+    case "rock":
+      return "paper";
+    case "paper":
+      return "scissors";
+    case "scissors":
+      return "rock";
+  }
+}
 
-// function getComputerChoice() {
-//   const computerSelection =
-//     OUTCOMES[Math.floor(Math.random() * OUTCOMES.length)];
-//   //Math.floor rounds the number to the closest(Smaller) integer
-//   //Math.random returns a value from 0-1 (1 not included)
+function getComputerChoice() {
+  const computerSelection =
+    OUTCOMES[Math.floor(Math.random() * OUTCOMES.length)];
+  //Math.floor rounds the number to the closest(Smaller) integer
+  //Math.random returns a value from 0-1 (1 not included)
 
-//   return computerSelection;
-// }
+  return computerSelection;
+}
 
-// function getPlayerChoice() {
-//   const playerSelection = prompt("Rock, Paper or Scissors?");
+function setDisplay(round) {
+  roundDisplay.textContent = `Round ${round}`;
+  playerScoreDisplay.textContent = playerScore;
+  computerScoreDisplay.textContent = computerScore;
+}
 
-//   const firtsLetterCap = playerSelection.charAt(0).toUpperCase();
-//   const stringRemainder = playerSelection.slice(1).toLowerCase().trim();
-//   const playerChoiceNoCase = firtsLetterCap.concat("", stringRemainder);
+function playRound(playerInput, computerInput) {
+  const playerLoseChoice = whoWinsAgainst(playerInput);
 
-//   return playerChoiceNoCase;
-// }
+  if (computerInput === playerInput) {
+    resultDisplay.dataset.result = "tie";
+    resultDisplay.textContent = "It's a tie!";
+  } else if (computerInput === playerLoseChoice) {
+    resultDisplay.dataset.result = "lose";
+    resultDisplay.textContent = `You lost! Computer choose ${computerInput}`;
+    ++computerScore;
+  } else if (playerInput == null) {
+    return;
+  } else {
+    resultDisplay.dataset.result = "win";
+    resultDisplay.textContent = `You win! Computer choose ${computerInput}`;
+    ++playerScore;
+  }
 
-// function whoWinsAgainst(input) {
-//   switch (input) {
-//     case "Rock":
-//       return "Paper";
-//     case "Paper":
-//       return "Scissors";
-//     case "Scissors":
-//       return "Rock";
-//   }
-// }
-
-// function playRound(playerInput, computerInput) {
-//   const playerLoseChoice = whoWinsAgainst(playerInput);
-
-//   if (computerInput == playerInput) {
-//     alert("It's a tie!");
-//   } else if (computerInput === playerLoseChoice) {
-//     alert(`You lost! Computer choose ${computerInput}`);
-//     computerScore++;
-//   } else {
-//     alert(`You win! Computer choose ${computerInput}`);
-//     playerScore++;
-//   }
-// }
-
-// function game() {
-//   gameRounds = parseInt(prompt("How many rounds do you want to play?"));
-
-//   for (let i = 1; i <= gameRounds; i++) {
-//     playRound(getPlayerChoice(), getComputerChoice());
-//   }
-
-//   checkResults();
-// }
+  currentRound++;
+  if (currentRound > gameRounds) {
+    SwitchPage(3);
+  } else {
+    setDisplay(currentRound);
+  }
+}
 
 // function checkResults() {
 //   if (playerScore > computerScore) {
