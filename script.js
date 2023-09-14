@@ -166,4 +166,7 @@ function resetValues() {
   computerScore = INITCOMPUTERSCORE;
   roundsNumber.textContent = gameRounds;
   downRoundButton.classList.add("deactivate");
+  resultDisplay.textContent = "";
+
+  setDisplay(currentRound);
 }
