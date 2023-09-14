@@ -144,5 +144,3 @@ function playRound(playerInput, computerInput) {
 //     );
 //   }
 // }
-
-// game();

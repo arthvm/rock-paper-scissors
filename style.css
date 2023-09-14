@@ -133,3 +133,39 @@ body {
 .game-footer > .result-display[data-result="lose"] {
   color: rgb(255, 94, 0);
 }
+
+/************************************************** RESULT SETTINGS **************************************************/
+
+.game-results {
+  display: flex;
+  display: flex;
+  gap: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.result-header {
+  font-size: 26px;
+}
+
+.result-header[data-final_result="win"] {
+  color: greenyellow;
+}
+
+.result-header[data-final_result="lose"] {
+  color: rgb(255, 94, 0);
+}
+
+.play-again-btn {
+  cursor: pointer;
+}
+
+.play-again-text {
+  color: #e7dd51;
+}
+
+.play-again-text:hover {
+  color: whitesmoke;
+}
