@@ -44,6 +44,11 @@ body {
   color: #bdb76b;
 }
 
+.round-btn:hover,
+.start-btn:hover {
+  color: #bd9c6b;
+}
+
 .round-btn {
   height: 25px;
   margin: 3px;
