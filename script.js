@@ -167,6 +167,7 @@ function resetValues() {
   roundsNumber.textContent = gameRounds;
   downRoundButton.classList.add("deactivate");
   resultDisplay.textContent = "";
+  finalResultDisplay.dataset.final_result = "";
 
   setDisplay(currentRound);
 }
