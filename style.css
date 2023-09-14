@@ -147,14 +147,14 @@ body {
 }
 
 .result-header {
-  font-size: 26px;
+  font-size: 21px;
 }
 
-.result-header[data-final_result="win"] {
+.final-result-text[data-final_result="win"] {
   color: greenyellow;
 }
 
-.result-header[data-final_result="lose"] {
+.final-result-text[data-final_result="lose"] {
   color: rgb(255, 94, 0);
 }
 

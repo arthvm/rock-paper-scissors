@@ -1,5 +1,10 @@
 /**************************************************GENERAL VARIABLES**************************************************/
 
+const INITGAMEROUNDS = 1,
+  INITCURRENTROUND = 1,
+  INITPLAYERSCORE = 0,
+  INITCOMPUTERSCORE = 0;
+
 let gameRounds = 1,
   currentRound = 1,
   playerScore = 0,
@@ -19,8 +24,13 @@ const playerScoreDisplay = document.querySelector(".player-score");
 const computerScoreDisplay = document.querySelector(".computer-score");
 const resultDisplay = document.querySelector(".result-display");
 
-/**************************************************PAGE SWITCHING**************************************************/
+/************************************************** RESULT VARIABLES **************************************************/
 
+const finalResultDisplay = document.querySelector(".final-result-text");
+
+/**************************************************GENERAL FUNCTIONS**************************************************/
+
+//PAGE SWITCHING********************************************************
 window.onload = () => {
   const tabSwitchers = document.querySelectorAll("[data-switcher]");
 
@@ -43,6 +53,8 @@ function SwitchPage(page_id) {
   );
   nextPage.classList.add("is-active");
 }
+
+//PLAYER INPUT********************************************************
 
 const choiceSelectors = document.querySelectorAll("[data-choice_selector]");
 
@@ -125,22 +137,33 @@ function playRound(playerInput, computerInput) {
 
   currentRound++;
   if (currentRound > gameRounds) {
+    checkResults();
+    resetValues();
     SwitchPage(3);
   } else {
     setDisplay(currentRound);
   }
 }
 
-// function checkResults() {
-//   if (playerScore > computerScore) {
-//     alert(
-//       `You won the game! You got ${playerScore} point(s) while the computer got ${computerScore}.`
-//     );
-//   } else if (playerScore === computerScore) {
-//     alert(`The game tied! You and the computer got ${playerScore} point(s).`);
-//   } else {
-//     alert(
-//       `You lost the game! The computer got ${computerScore} point(s) while you got ${playerScore}.`
-//     );
-//   }
-// }
+/**************************************************RESULT SECTION**************************************************/
+
+function checkResults() {
+  if (playerScore > computerScore) {
+    finalResultDisplay.dataset.final_result = "win";
+    finalResultDisplay.textContent = `You won the game! You got ${playerScore} point(s) while the computer got ${computerScore}.`;
+  } else if (playerScore === computerScore) {
+    finalResultDisplay.textContent = `The game tied! You and the computer got ${playerScore} point(s).`;
+  } else {
+    finalResultDisplay.dataset.final_result = "lose";
+    finalResultDisplay.textContent = `You lost the game! The computer got ${computerScore} point(s) while you got ${playerScore}.`;
+  }
+}
+
+function resetValues() {
+  gameRounds = INITGAMEROUNDS;
+  currentRound = INITCURRENTROUND;
+  playerScore = INITPLAYERSCORE;
+  computerScore = INITCOMPUTERSCORE;
+  roundsNumber.textContent = gameRounds;
+  downRoundButton.classList.add("deactivate");
+}
