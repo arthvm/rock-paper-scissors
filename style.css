@@ -159,6 +159,10 @@ body {
   color: greenyellow;
 }
 
+.final-result-text[data-final_result="tie"] {
+  color: whitesmoke;
+}
+
 .final-result-text[data-final_result="lose"] {
   color: rgb(255, 94, 0);
 }

@@ -152,6 +152,7 @@ function checkResults() {
     finalResultDisplay.dataset.final_result = "win";
     finalResultDisplay.textContent = `You won the game! You got ${playerScore} point(s) while the computer got ${computerScore}.`;
   } else if (playerScore === computerScore) {
+    finalResultDisplay.dataset.final_result = "tie";
     finalResultDisplay.textContent = `The game tied! You and the computer got ${playerScore} point(s).`;
   } else {
     finalResultDisplay.dataset.final_result = "lose";
@@ -167,7 +168,6 @@ function resetValues() {
   roundsNumber.textContent = gameRounds;
   downRoundButton.classList.add("deactivate");
   resultDisplay.textContent = "";
-  finalResultDisplay.dataset.final_result = "";
 
   setDisplay(currentRound);
 }
